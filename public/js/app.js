@@ -8,9 +8,7 @@ atl.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     $routeProvider
         .when('/', {
             templateUrl: '/views/app.view.html',
-            controller: function($scope, $log, songs) {
-                $scope.songs = songs;
-            },
+            controller: 'AppController',
             resolve: {
                 songs: function(Song) {
                     return Song.get();
@@ -19,4 +17,6 @@ atl.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         })
         .otherwise({redirectTo: '/'})
 }]);
+
+
     

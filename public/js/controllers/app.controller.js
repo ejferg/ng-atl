@@ -1,7 +1,10 @@
 atl.controller('AppController', 
-    ['$scope', '$log', 'songs', 
-    function($scope, $log, songs) {
-    
-    $log.log(songs);
-        // $scope.songs = songs;
+    ['$rootScope', '$scope', '$log', 'util', 'rtc', 'songs',
+    function($rootScope, $scope, $log, util, rtc, songs) {
+        
+        $rootScope.session = { token: util.uuid() };
+        // rtc.connect('ngapp');
+        
+        
+        $scope.songs = songs;
 }]);

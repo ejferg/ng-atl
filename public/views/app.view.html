@@ -1,8 +1,10 @@
-<div>
+<div id="song-list">
     <ul>
         <li ng-repeat="song in songs">
-            <h1>{{song.name}}</h1>
-            <span>{{song.user_name}}</span>
+            <div atl-song-cell
+                 atl-song-cell-title="song.name"
+                 atl-song-cell-sp="song.songpacks"
+                 atl-song-cell-artist="song.user_name"> </div>
         </li>
     </ul>
 </div>
