@@ -1,16 +1,17 @@
-atl.directive('atlSongCell', ['$log', function($log) {
+atl.directive('atlSongCell', ['$log', 'config', function($log, config) {
     
     return {
         templateUrl: 'ui/song.cell.html',
         scope: {
+            id: '=atlSongCell',
             soundPacks: '=atlSongCellSp',
             artist: '=atlSongCellArtist',
             title: '=atlSongCellTitle'
         },
         link: function(scope, elem, attrs) {
             
-            var SP_URL = 'https://s3.amazonaws.com/sp.mshp.dj/%s/art-s.png';
-            var albumArtUrl = _.str.sprintf(SP_URL, scope.soundPacks[0]._id);
+            var songUrl = _.str.sprintf(config.songUrl, scope.id);
+            var albumArtUrl = _.str.sprintf(config.soundPackUrl + 'art-s.png', scope.soundPacks[0]._id);
             
             // Skin Parts
             var albumArt = elem.find('[skin-part="albumArt"]');
@@ -24,7 +25,13 @@ atl.directive('atlSongCell', ['$log', function($log) {
             
             elem.bind('click', function onClick (e) {
                 
-                scope.$emit('songSelected', scope);
+                var item = {
+                    itemID: scope.id,
+                    itemURL: songUrl,
+                    onfinish: function(){}
+                };
+                
+                scope.$emit('songSelected', item);
             });
         }
     }

@@ -17,6 +17,7 @@
         <script src="https://cdn.firebase.com/v0/firebase.js"></script>
         <script src="../lib/socket.io-client/dist/socket.io.js"></script>
         <script src="../lib/angular-firebase/ng-firebase.js"></script>
+        <script src="../lib/soundmanager/script/soundmanager2.js"></script>
         <script src="../lib/underscore.string/lib/underscore.string.js"></script>
         <script src="../lib/DataChannel-polyfill/dist/datachannel.js"></script>
         <script src="../lib/node-uuid/uuid.js"></script>
@@ -26,14 +27,18 @@
         
         <!-- Controllers -->
         <script src="js/controllers/app.controller.js"></script>
+        <script src="js/controllers/song.list.controller.js"></script>
+        <script src="js/controllers/play.bar.controller.js"></script>
         
         <!-- Directives -->
         <script src="js/directives/ui/ui.peer.video.js"></script>
         <script src="js/directives/ui/ui.song.cell.js"></script>
+        <script src="js/directives/ui/ui.play.bar.js"></script>
         
         <!-- Core Servies -->
         <script src="js/services/core/config.js"></script>
         <script src="js/services/core/util.js"></script>
+        <script src="js/services/core/audio.manager.js"></script>
         
         <!-- RTC Servies -->
         <script src="js/services/rtc/rtc.js"></script>
@@ -42,6 +47,9 @@
         
         <!-- Model Services -->
         <script src="js/services/models/song.js"></script>
+        
+        <!-- Filters-->
+        <script src="js/filters/noext.js"></script>
         
     </body>
 </html>

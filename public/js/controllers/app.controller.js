@@ -4,7 +4,6 @@ atl.controller('AppController',
         
         $rootScope.session = { token: util.uuid() };
         // rtc.connect('ngapp');
-        
-        
+        // $rootScope.songs = songs;
         $scope.songs = songs;
 }]);
