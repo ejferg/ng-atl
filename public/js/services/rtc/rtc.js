@@ -58,7 +58,7 @@ atl.factory('rtc',
         var event = angular.fromJson(data);
         
         if(event) {
-            $rootScope.$broadcast(event.name, event.data.message);
+            $rootScope.$broadcast(event.eventName, event.data.message);
         }
         
     };

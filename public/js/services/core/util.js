@@ -5,6 +5,11 @@ atl.factory('util', function() {
         uuid: function() {
             return uuid.v4();
         },
+        noExtenstion: function(name) {
+            
+            var name = name.split('.')[0] || 'Untitled';
+            return name;
+        },
         toMultiPartSDP: function(sdp) {
             
                 sdp = JSON.stringify(sdp);

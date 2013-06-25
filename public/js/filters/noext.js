@@ -1,4 +1,4 @@
-atl.filter('noext', function() {
+atl.filter('noext', ['util', function(util) {
     
   return function(name) {
     
@@ -6,4 +6,4 @@ atl.filter('noext', function() {
     
     return name;
   };
-});
+}]);

@@ -10,6 +10,8 @@ atl.controller('PeerVideoController',
                 
                 $scope.localStream = {id: 'you', url: url};
             });
+            
+            // rtc.connect('ngapp');
         };
         
         var updateStream = function() {
