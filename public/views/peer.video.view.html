@@ -1,0 +1,12 @@
+<div id="peer-video-view" ng-controller="PeerVideoController">
+    
+    <div atl-peer-video="{{localStream.id}}" 
+         atl-peer-video-url="{{localStream.url}}"
+         atl-peer-video-type="local"></div>
+    
+    <div ng-repeat="stream in streams">
+    
+        <div atl-peer-video="{{stream.id}}"
+             atl-peer-video-type="remote"></div>
+    </div>
+</div>

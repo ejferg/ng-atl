@@ -133,3 +133,9 @@ video {
     /*margin-right: 200px;*/
 }
 
+.peer-video {
+    
+    padding: 20px;
+    background-color: #fff;
+}
+

@@ -37,11 +37,16 @@ atl.factory('rtc',
         // console.log('peer ' + socketID + ' joined');
         // rtc.attachStream(stream,"you"); // <video id="you">
         
-        $log.log(socketId);
+        $log.log(stream);
+        
+        wrtc.attachStream(stream, socketId);
+        $rootScope.$broadcast('remoteStreamAdded', {id: socketId, stream: stream});
+        
     };
     
     var onStreamDisconnected = function(data) {
-        console.log('peer ' + data + ' disconnected');
+        
+        $rootScope.$broadcast('streamDisconnected', data);
     };
     
     return {
