@@ -7,4 +7,8 @@ atl.controller('AppController',
         
         rtc.connect('ngapp');
         
+        $scope.test = function() {
+            rtc.send('test_event', {message: "just a test", room: "ngapp"});
+        }
+        
 }]);

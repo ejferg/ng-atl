@@ -46,6 +46,31 @@ wrtc.rtc.on('disconnect', function(rtc) {
 	console.log('user disconnected');
 });
 
+wrtc.rtc.on('chat_msg', function(data, socket) {
+  var roomList = wrtc.rtc.rooms[data.room] || [];
+
+  for (var i = 0; i < roomList.length; i++) {
+    var socketId = roomList[i];
+
+    if (socketId !== socket.id) {
+      var soc = wrtc.rtc.getSocket(socketId);
+
+      if (soc) {
+        soc.send(JSON.stringify({
+          "eventName": "receive_chat_msg",
+          "data": {
+            "messages": data.messages
+          }
+            }), function(error) {
+              if (error) {
+                console.log(error);
+              }
+            });
+      }
+    }
+  }
+});
+
 /* -------------- </webrtc.io> -------------- */
 
 

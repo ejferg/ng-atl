@@ -1,6 +1,6 @@
 atl.controller('SongListController', 
-    ['$rootScope', '$scope', '$log', 'audioManager',
-    function($rootScope, $scope, $log, audioManager) {
+    ['$rootScope', '$scope', '$log', 'audioManager', 'rtc',
+    function($rootScope, $scope, $log, audioManager, rtc) {
         
         var play = function(items) {
             
@@ -11,8 +11,11 @@ atl.controller('SongListController',
         $scope.$on('songSelected', function onSongSelected(e, data) {
             
             play([data]);
-
-            $log.log(data);
+            rtc.send('peerSongSelected', {message: data.itemID, room: "ngapp"});
+        });
+        
+        $scope.$on('peerSongSelected', function onPeerSongSelected(e, data){
+            play([data]);
         });
         
         // rtc.connect('ngapp');

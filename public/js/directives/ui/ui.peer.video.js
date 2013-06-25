@@ -3,14 +3,25 @@ atl.directive('atlPeerVideo', ['$log', '$document', 'rtc', function($log, rtc) {
     return {
             scope: {
                 id: '@atlPeerVideo',
-                type:'@atlPeerVideoType',
                 url: '@atlPeerVideoUrl'
             },
             replace: true,
             templateUrl: 'ui/peer.video.html',
-            link: function(scope, elm, attrs) {
+            link: function(scope, elem, attrs) {
                 
-                var video = elm.find('[data-skin-part="video"]');
+                var type = attrs['atlPeerVideoType'];
+                var video = elem.find('[data-skin-part="video"]');
+                
+                // if(type == 'remote') {
+                    
+                //     elem.find('[data-skin-part="video"]').remove();
+                    
+                //     var video = $('#you').clone();
+                //     elem.append(video);
+                // } else {
+                //     var video = elem.find('[data-skin-part="video"]');
+                // }
+                
                 
                 scope.$watch('url', function onUrlChanged(newValue, oldValue){
                     
