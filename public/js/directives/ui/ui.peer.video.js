@@ -1,7 +1,7 @@
 atl.directive('atlPeerVideo', ['$log', 'rtc', function($log, rtc) {
     
     return {
-            restrict: 'E',
+            // restrict: 'E',
             replace: true,
             templateUrl: 'ui/peer.video.html',
             link: function(scope, elm, attrs) {
@@ -12,6 +12,7 @@ atl.directive('atlPeerVideo', ['$log', 'rtc', function($log, rtc) {
                 rtc.createStream().then(function(url){
                     
                     video.attr('src', url);
+                    // video.play();
                 });
             }
     }

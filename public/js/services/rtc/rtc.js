@@ -1,4 +1,6 @@
-atl.factory('rtc', ['$q', '$log', '$window', function($q, $log, $window){
+atl.factory('rtc', 
+    ['$rootScope', '$q', '$log', '$window', 
+    function($rootScope, $q, $log, $window){
     
     var wrtc = $window.rtc;
     var config = {
@@ -23,7 +25,9 @@ atl.factory('rtc', ['$q', '$log', '$window', function($q, $log, $window){
             
             var url = URL.createObjectURL(stream);
             
-            return deferred.resolve(url);
+            return $rootScope.$apply(function() {
+                return deferred.resolve(url);
+            });
         });
         
         return deferred.promise;
@@ -32,6 +36,8 @@ atl.factory('rtc', ['$q', '$log', '$window', function($q, $log, $window){
     var onRemoteStreamAdded = function(stream, socketId) {
         // console.log('peer ' + socketID + ' joined');
         // rtc.attachStream(stream,"you"); // <video id="you">
+        
+        $log.log(socketId);
     };
     
     var onStreamDisconnected = function(data) {
