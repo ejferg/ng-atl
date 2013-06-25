@@ -6,21 +6,13 @@ atl.directive('atlPeerVideo', ['$log', 'rtc', function($log, rtc) {
             templateUrl: 'ui/peer.video.html',
             link: function(scope, elm, attrs) {
                 
-                var options = {video: true, audio: true};
+                var type = attrs['atlPeerVideoType'] || 'local';
+                var video = elm.find('[data-skin-part="video"]');
                 
-                var localVideo = elm.find('[data-skin-part="localVideo"]');
-                var remoteVideo = elm.find('[data-skin-part="remoteVideo"]');
-                
-                rtc.addStream('local', options)
-                    .then(
-                        function onSuccess(data) {
-                            localVideo.attr('src', data.url);
-                        },
-                        function onError(err) {
-                            
-                            $log.error(err);
-                        }
-                    );
+                rtc.createStream().then(function(url){
+                    
+                    video.attr('src', url);
+                });
             }
     }
 }]);

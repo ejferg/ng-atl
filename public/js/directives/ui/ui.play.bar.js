@@ -5,6 +5,8 @@ atl.directive('atlPlayBar', ['$parse', function($parse){
        templateUrl: 'ui/play.bar.html',
        link: function(scope, elem, attrs) {
            
+           var btnClass = 'play-bar-btn-%s';
+           var titleLabel = elem.find('[skin-part="titleLabel"]');
            var playButton = elem.find('[skin-part="playButton"]');
            var skipButton = elem.find('[skin-part="skipButton"]');
            
@@ -27,8 +29,25 @@ atl.directive('atlPlayBar', ['$parse', function($parse){
                }
            });
            
-           scope.$watch('state', function onStateChange(value){
+           scope.$watch('title', function onTitleChange(newValue){
                
+               if(newValue) {
+                   
+                    titleLabel.text(newValue);
+               }
+               
+           });
+           
+           scope.$watch('state', function onStateChange(newValue, oldValue){
+               
+               if(newValue && oldValue) {
+                   
+                   var oldClass = _.str.sprintf(btnClass, oldValue);
+                   var newClass = _.str.sprintf(btnClass, newValue);
+                   
+                   playButton.removeClass(oldClass);
+                   playButton.addClass(newClass);
+               }
            });
        }
    }

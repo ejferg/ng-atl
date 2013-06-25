@@ -1,12 +1,20 @@
-<div id="song-list" ng-controller="SongListController">
-    <ul>
-        <li ng-repeat="song in songs">
-            <div atl-song-cell="song._id"
-                 atl-song-cell-title="song.name | noext"
-                 atl-song-cell-sp="song.songpacks"
-                 atl-song-cell-artist="song.user_name"> </div>
-        </li>
-    </ul>
+<div id="side-bar">
+
+    <div id="search-bar">
+        <input type="text" class="search-input" ng-model="search" />
+    </div>
+    
+    <div id="song-list" ng-controller="SongListController">
+        <ul>
+            <li ng-repeat="song in songs | filter:search">
+                <div atl-song-cell="song._id"
+                     atl-song-cell-title="song.name | noext"
+                     atl-song-cell-sp="song.songpacks"
+                     atl-song-cell-artist="song.user_name"> </div>
+            </li>
+        </ul>
+    </div>
+    
 </div>
 
 <div id="play-bar" ng-controller="PlayBarController">

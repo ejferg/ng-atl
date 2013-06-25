@@ -6,16 +6,16 @@
 var express = require('express')
   , http = require('http')
   , path = require('path')
-  , io = require('socket.io');
+  , wrtc = require('webrtc.io');
 
 var app = express();
 var server = http.createServer(app);
+wrtc = wrtc.listen(server);
 
-io = io.listen(server, { log: false });
 
 /* -------------- <configurations> -------------- */
 
-app.set('port', process.env.PORT || 3000);
+app.set('port', process.env.PORT || 8080);
 app.set('views', __dirname + '/views');
 app.set('view engine', 'ejs');
 app.use(express.favicon());
@@ -31,63 +31,22 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 server.listen(app.get('port'));
 
-/* -------------- for presence detection! -------------- */
 
-var channels = {};
+/* -------------- <webrtc.io> -------------- */
 
-/* -------------- <socket.io> -------------- */
-
-io.sockets.on('connection', function (socket) {
-    console.log('connected');
-    
-    var initiatorChannel = '';
-    
-    if (!io.connected)
-        io.connected = true;
-
-    socket.on('new-channel', function (data) {
-    
-        console.log('io:: new-channel ::');
-        
-        channels[data.channel] = data.channel;
-        onNewNamespace(data.channel, data.sender);
-    });
-
-    socket.on('presence', function (channel) {
-        
-        console.log('io:: presence ::');
-        
-        var isChannelPresent = !!channels[channel];
-        socket.emit('presence', isChannelPresent);
-        
-        if (!isChannelPresent)
-            initiatorChannel = channel;
-    });
-
-    socket.on('disconnect', function (channel) {
-        
-        if (initiatorChannel)
-            channels[initiatorChannel] = null;
-    });
+wrtc.rtc.on('connect', function(rtc) { 
+    console.log('user connected');
 });
 
-var onNewNamespace = function(channel, sender) {
-    
-    io.of('/' + channel).on('connection', function (socket) {
-        
-        if (io.isConnected) {
-            io.isConnected = false;
-            socket.emit('connect', true);
-        }
+wrtc.rtc.on('send answer', function(rtc) { 
+	console.log('answer sent');
+});
 
-        socket.on('message', function (data) {
-            if (data.sender == sender)
-                socket.broadcast.emit('message', data.data);
-        });
-    });
-}
+wrtc.rtc.on('disconnect', function(rtc) { 
+	console.log('user disconnected');
+});
 
-/* -------------- </socket.io> -------------- */
+/* -------------- </webrtc.io> -------------- */
 
 
 /* -------------- <routes> -------------- */

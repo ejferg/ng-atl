@@ -27,6 +27,7 @@ atl.directive('atlSongCell', ['$log', 'config', function($log, config) {
                 
                 var item = {
                     itemID: scope.id,
+                    itemTitle: scope.title,
                     itemURL: songUrl,
                     onfinish: function(){}
                 };
