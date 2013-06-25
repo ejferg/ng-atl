@@ -8,6 +8,8 @@ atl.factory('rtc',
         "audio": true
     };
     
+    var streams = {};
+    
     var connect = function(channel) {
         
         wrtc.connect("ws://ng-atl.ejferg.c9.io", channel);
@@ -33,24 +35,28 @@ atl.factory('rtc',
         return deferred.promise;
     };
     
+    var attachStream = function(stream, id) {
+        
+        wrtc.attachStream(stream, id);
+    }
+    
     var onRemoteStreamAdded = function(stream, socketId) {
-        // console.log('peer ' + socketID + ' joined');
-        // rtc.attachStream(stream,"you"); // <video id="you">
         
         $log.log(stream);
-        
-        wrtc.attachStream(stream, socketId);
-        $rootScope.$broadcast('remoteStreamAdded', {id: socketId, stream: stream});
+
+        var url = URL.createObjectURL(stream);
+        $rootScope.$broadcast('remoteStreamAdded', {id: socketId, url: url});
         
     };
     
     var onStreamDisconnected = function(data) {
-        
+        $log.log(data);
         $rootScope.$broadcast('streamDisconnected', data);
     };
     
     return {
         connect: connect,
+        attachStream: attachStream,
         createStream: createStream
     }
 }]);

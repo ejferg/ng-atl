@@ -6,7 +6,8 @@
     
     <div ng-repeat="stream in streams">
     
-        <div atl-peer-video="{{stream.id}}"
+        <div atl-peer-video
+             atl-peer-video-url="{{stream.url}}"
              atl-peer-video-type="remote"></div>
     </div>
 </div>

@@ -1,4 +1,4 @@
-atl.directive('atlPeerVideo', ['$log', 'rtc', function($log, rtc) {
+atl.directive('atlPeerVideo', ['$log', '$document', 'rtc', function($log, rtc) {
     
     return {
             scope: {
@@ -14,9 +14,11 @@ atl.directive('atlPeerVideo', ['$log', 'rtc', function($log, rtc) {
                 
                 scope.$watch('url', function onUrlChanged(newValue, oldValue){
                     
-                    if(angular.isDefined(newValue) && (newValue != oldValue)) {
+                    if(newValue && (newValue != oldValue)) {
                         
                         video.attr('src', scope.url);
+                        // video.get(0).play();
+                        
                     }
                 });
                 

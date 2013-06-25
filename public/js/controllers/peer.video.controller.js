@@ -12,13 +12,20 @@ atl.controller('PeerVideoController',
             });
         };
         
-        var onRemoteStreamAdded = function(stream) {
-            streams.push(stream);
+        var updateStream = function() {
             $scope.streams = streams;
+            $scope.$apply();
         };
         
-        var onStreamDisconnected = function(stream) {
+        var onRemoteStreamAdded = function(e, stream) {
+            streams.push(stream);
+            updateStream();
+        };
+        
+        var onStreamDisconnected = function(e, id) {
             
+            streams = _.filter(streams, function(item) { return item.id != id});
+            updateStream();
         };
         
         createLocalStream();
