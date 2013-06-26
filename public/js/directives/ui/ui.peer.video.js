@@ -12,28 +12,15 @@ atl.directive('atlPeerVideo', ['$log', '$document', 'rtc', function($log, rtc) {
                 var type = attrs['atlPeerVideoType'];
                 var video = elem.find('[data-skin-part="video"]');
                 
-                // if(type == 'remote') {
+                scope.$watch('url', function onUrlChanged(newValue, oldValue) {
                     
-                //     elem.find('[data-skin-part="video"]').remove();
-                    
-                //     var video = $('#you').clone();
-                //     elem.append(video);
-                // } else {
-                //     var video = elem.find('[data-skin-part="video"]');
-                // }
-                
-                
-                scope.$watch('url', function onUrlChanged(newValue, oldValue){
-                    
-                    if(newValue && (newValue != oldValue)) {
+                    if(newValue) {
                         
                         video.attr('src', scope.url);
-                        // video.get(0).play();
-                        
                     }
                 });
                 
-                scope.$watch('id', function onUrlChanged(newValue, oldValue){
+                scope.$watch('id', function onUrlChanged(newValue, oldValue) {
                     
                     if(angular.isDefined(newValue) && (newValue != oldValue)) {
                         
