@@ -1,28 +1,14 @@
-<button ng-click="test()">Test</button>
-
-<div id="side-bar">
-
-    <div id="search-bar">
-        <input type="text" class="search-input" ng-model="search" />
-    </div>
-    
-    <div id="song-list" ng-controller="SongListController">
-        <ul>
-            <li ng-repeat="song in songs | filter:search">
-                <div atl-song-cell="song._id"
-                     atl-song-cell-title="song.name | noext"
-                     atl-song-cell-sp="song.songpacks"
-                     atl-song-cell-artist="song.user_name"> </div>
-            </li>
-        </ul>
-    </div>
-    
-</div>
+<div id="logo"></div>
+<div id="side-menu" 
+     ng-controller="SideMenuController"
+     ng-include="content.sideMenu" 
+     class="side-menu-state-{{state}}"></div>
 
 <div atl-peer-video-view></div>
 
-<div id="play-bar" ng-controller="PlayBarController">
-    
+<div id="play-bar" 
+     ng-controller="PlayBarController">
+     
     <div atl-play-bar
      atl-play-bar-on-play="togglePlay()"
      atl-play-bar-on-skip="skip()"></div>

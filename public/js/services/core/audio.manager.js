@@ -62,24 +62,25 @@ atl.factory('audioManager',
 
 		var pausePlayback = function() {
 
-			sm.pause();
 			_isPlaying = false;
 
 			var item = currentPlaybackItem();
 
 			if(item) {
+                sm.pause(item.itemID);
 				$rootScope.$broadcast('pausedPlaying', item);
 			}
 		};
 
 		var resumePlayback = function() {
 
-			sm.resume();
+			
 			_isPlaying = true;
 
 			var item = currentPlaybackItem();
 
 			if(item) {
+                sm.resume(item.itemID);
 				$rootScope.$broadcast('startedPlaying', item);
 			}
 		};
@@ -186,6 +187,8 @@ atl.factory('audioManager',
 		return {
 			startPlayback: startPlayback,
 			stopPlayback: stopPlayback,
+            pausePlayback: pausePlayback,
+            resumePlayback: resumePlayback,
 			setPlaybackQueue: setPlaybackQueue,
 			isPlaying: isPlaying
 		};

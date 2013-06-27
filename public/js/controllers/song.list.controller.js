@@ -29,8 +29,4 @@ atl.controller('SongListController',
             
             play([item]);
         });
-        
-        // rtc.connect('ngapp');
-        
-        // $rootScope.songs = songs;
 }]);

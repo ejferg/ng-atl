@@ -1,7 +1,8 @@
 atl.factory('rtc', 
-    ['$rootScope', '$q', '$log', '$window', 
-    function($rootScope, $q, $log, $window){
+    ['$rootScope', '$q', '$log', '$window', 'util', 
+    function($rootScope, $q, $log, $window, util){
     
+    this.sender;
     this.channel = "";
     
     var wrtc = $window.rtc;
@@ -13,7 +14,7 @@ atl.factory('rtc',
     var send = function(event, data) {
         
         var channels = wrtc.dataChannels;
-        var msg = angular.toJson({ eventName: event, data: data});
+        var msg = angular.toJson({ eventName: event, sender: this.sender, data: data});
         
         angular.forEach(channels, function(channel) {
             
@@ -23,10 +24,11 @@ atl.factory('rtc',
     
     var connect = function(channel) {
         
+        this.sender = util.uuid();
         this.channel = channel;
         wrtc.connect("ws://ng-atl.ejferg.c9.io", channel);
 
-        wrtc.on('data stream data', onMessageReceived);
+        wrtc.on('data stream data', angular.bind(this, onMessageReceived));
         wrtc.on('add remote stream', onRemoteStreamAdded);
         wrtc.on('disconnect stream', onStreamDisconnected);
 
@@ -57,7 +59,7 @@ atl.factory('rtc',
         
         var event = angular.fromJson(data);
         
-        if(event) {
+        if(event && (event.sender != this.sender)) {
             $rootScope.$broadcast(event.eventName, event.data.message);
         }
         

@@ -4,7 +4,8 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  background: url('../img/background@2x.png') top center no-repeat;
+  overflow: hidden;
+  background: url('../img/bg.png') top center no-repeat;
 }
 
 p{
@@ -22,27 +23,54 @@ a {
 
 video {
     background: #222;
-    width: 400px;
-    height: 320px;
+    width: 300px;
+    height: 220px;
 }
 
+#logo {
+   position: absolute;
+   width: 500px;
+   height: 79px;
+   left: 0;
+   top: 0;
+   background: url('../img/logo.png') top center no-repeat;
+}
 #container {
     
     width: 100%;
     height: 100%;
 }
 
-#side-bar {
-    
+#side-menu {
+    position: relative;
     width: 400px;
     height: 100%;
+    top: -48px;
     float: right;
 }
 
-#search-bar {
+#search-menu {
     width: 340px;
     background-color: #fff;
     padding: 10px;
+}
+
+.side-menu-state-hide {
+    left: 390px;
+}
+
+.side-menu-state-show {
+   left: 37px; 
+}
+
+.side-menu-btn {
+    position: relative;
+    width: 48px;
+    height: 48px;
+    top: 48px;
+    left: -48px;
+    display: block;
+    background: url('../img/menu-icon.png');
 }
 
 .search-input {
@@ -105,6 +133,19 @@ video {
     display: inline-block;
 }
 
+.play-bar-controls {
+    
+    margin: -55px auto;
+    width: 200px;
+    height: 50px;
+}
+
+.play-bar-title {
+    
+    margin-left: 40px;
+    margin-top: 20px;
+}
+
 .play-bar-btn {
     width: 47px;
     height: 48px;
@@ -136,6 +177,12 @@ video {
 .peer-video {
     
     padding: 20px;
+    max-width: 300px;
+    height: 280px;
     background-color: #fff;
+}
+
+.peer-video-local {
+    
 }
 

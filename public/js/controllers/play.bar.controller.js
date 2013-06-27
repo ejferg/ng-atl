@@ -1,42 +1,60 @@
 atl.controller('PlayBarController', 
-    ['$rootScope', '$scope', '$log', 'audioManager', 
-    function($rootScope, $scope, $log, audioManager) {
+    ['$rootScope', '$scope', '$log', 'audioManager', 'rtc', 
+    function($rootScope, $scope, $log, audioManager, rtc) {
         
         $scope.state = 'play';
         
-        $scope.togglePlay = function() {
+        var setPauseState = function(title) {
+            $scope.state = 'pause';
+            $scope.$apply();
+        };
+        
+        var setPlayState = function() {
+            
+            $scope.state = 'play';
+            $scope.$apply();
+        };
+
+        var togglePlay = function() {
             
             if($scope.state == 'pause') {
                 
-                audioManager.stopPlayback();
+                audioManager.pausePlayback();
+                
             } else {
                 
                 audioManager.resumePlayback();
             }
         };
         
-        $scope.skip = function() {
+        var skip = function() {
             
             $log.log('skip');
         };
         
-        $rootScope.$on('startedPlaying', function onStartedPlaying(e, data){
+        $scope.togglePlay = togglePlay;
+        $scope.skip = skip;
+        
+        $rootScope.$on('startedPlaying', function onStartedPlaying(e, data) {
             
-            $scope.state = 'pause';
             $scope.title = data.itemTitle;
-            $scope.$apply();
+            setPauseState();
         });
         
-        $rootScope.$on('stoppedPlaying', function onStoppedPlaying(e){
+        $rootScope.$on('stoppedPlaying', function onStoppedPlaying(e) {
             
-            $scope.state = 'play';
-            $scope.$apply();
+            setPlayState();
         });
         
-        $rootScope.$on('pausedPlaying', function onPausedPlaying(e){
+        $rootScope.$on('pausedPlaying', function onPausedPlaying(e) {
             
-            $scope.state = 'play';
-            $scope.$apply();
+            setPlayState();
+            rtc.send('peerTogglePlay', {message: "", room: "ngapp"});
+        });
+        
+        $rootScope.$on('peerTogglePlay', function onPeerTogglePlay(e) {
+            
+            togglePlay();
         });
     
 }]);
