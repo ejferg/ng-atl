@@ -48,10 +48,10 @@ body { font-family: 'Open Sans', sans-serif; line-height: .8; font-size: 45px; }
 a, a:hover, a:visited {
     text-decoration: none;
     font-style: normal;
-    color: #000;
+    color: #666;
     cursor: pointer;
 }
-a:hover { color: #fff;}
+a:hover { color: #333;}
 
 .title { font-size: 275px; }
 .big { text-transform: uppercase; margin: 0; padding: 0; }
@@ -103,7 +103,7 @@ blockquote .author {
     text-shadow: rgba(0,0,0,.01) 0 0 1px; /* Chrome @font-face anti-aliasing fix */
 }
 
-.step:not(.active) { opacity: 0.1; }
+.step:not(.active) { opacity: 1; }
 
 
 /* STEP SPECIFIC STYLES */
