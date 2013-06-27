@@ -1,4 +1,6 @@
-atl.directive('atlPeerVideo', ['$log', '$document', 'rtc', function($log, rtc) {
+atl.directive('atlPeerVideo', 
+    ['$log', '$document', 'rtc', 'util', 
+    function($log, rtc, util) {
     
     return {
             scope: {
@@ -9,9 +11,9 @@ atl.directive('atlPeerVideo', ['$log', '$document', 'rtc', function($log, rtc) {
             templateUrl: 'ui/peer.video.html',
             link: function(scope, elem, attrs) {
                 
+                var isMuted = true;
                 var type = attrs['atlPeerVideoType'];
                 var video = elem.find('[skin-part="video"]');
-                var label = elem.find('[skin-part="label"]');
                 
                 scope.$watch('url', function onUrlChanged(newValue, oldValue) {
                     
@@ -26,7 +28,6 @@ atl.directive('atlPeerVideo', ['$log', '$document', 'rtc', function($log, rtc) {
                     if(angular.isDefined(newValue) && (newValue != oldValue)) {
                         
                         video.attr('id', scope.id);
-                        label.text(scope.id);
                     }
                 });
             }

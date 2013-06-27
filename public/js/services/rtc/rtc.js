@@ -40,7 +40,11 @@ atl.factory('rtc',
         
         wrtc.createStream(config, function onStreamCreated(stream){
             
+            
+            
             var url = URL.createObjectURL(stream);
+            
+            // util.toggleMuted(stream, false);
             
             return $rootScope.$apply(function() {
                 return deferred.resolve({id: stream.id, url: url});

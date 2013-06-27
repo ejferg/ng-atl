@@ -60,7 +60,7 @@ atl.factory('audioManager',
 			_isPlaying = false;
 		};
 
-		var pausePlayback = function() {
+		var pausePlayback = function(disableEvent) {
 
 			_isPlaying = false;
 
@@ -68,11 +68,13 @@ atl.factory('audioManager',
 
 			if(item) {
                 sm.pause(item.itemID);
-				$rootScope.$broadcast('pausedPlaying', item);
+                
+                // if(!disableEvent)
+				    $rootScope.$broadcast('pausedPlaying', item);
 			}
 		};
 
-		var resumePlayback = function() {
+		var resumePlayback = function(disableEvent) {
 
 			
 			_isPlaying = true;
@@ -81,7 +83,9 @@ atl.factory('audioManager',
 
 			if(item) {
                 sm.resume(item.itemID);
-				$rootScope.$broadcast('startedPlaying', item);
+                
+                // if(!disableEvent)
+				    $rootScope.$broadcast('startedPlaying', item);
 			}
 		};
 

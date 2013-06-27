@@ -1,6 +1,6 @@
 html, body {
     
-  font-family: 'Cabin', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   margin: 0;
   padding: 0;
   height: 100%;
@@ -29,10 +29,10 @@ video {
 
 #logo {
    position: absolute;
-   width: 500px;
-   height: 79px;
-   left: 0;
-   top: 0;
+   width: 300px;
+   height: 47px;
+   left: 10px;
+   top: 10px;
    background: url('../img/logo.png') top center no-repeat;
 }
 #container {
@@ -177,8 +177,8 @@ video {
 #peer-video-view {
     margin-left: auto;
     margin-right: auto;
-    margin-top: 100px;
-    width:70%;
+    margin-top: 200px;
+    width:90%;
     text-align: center;
 }
 
@@ -191,7 +191,12 @@ video {
     margin-right: 5px;
 }
 
+.peer-video-label {
+    font-size: 10px;
+    margin-top: 30px;
+}
+
 .peer-video-local {
-    
+    background-color: #57245b;
 }
 

@@ -5,6 +5,19 @@ atl.factory('util', function() {
         uuid: function() {
             return uuid.v4();
         },
+        toggleMute: function(stream, muted) {
+            
+            if (muted) {
+
+              for (i = 0; i < stream.audioTracks.length; i++) {
+                stream.audioTracks[i].enabled = true;
+              }
+            } else {
+              for (i = 0; i < stream.audioTracks.length; i++){
+                stream.audioTracks[i].enabled = false;
+              }
+            }
+        },
         noExtenstion: function(name) {
             
             var name = name.split('.')[0] || 'Untitled';

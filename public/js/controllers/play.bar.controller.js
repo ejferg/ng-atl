@@ -55,6 +55,16 @@ atl.controller('PlayBarController',
         $rootScope.$on('peerTogglePlay', function onPeerTogglePlay(e) {
             
             togglePlay();
+            // if($scope.state == 'pause') {
+                
+            //     audioManager.pausePlayback(true);
+            //     setPlayState();
+                
+            // } else {
+                
+            //     audioManager.resumePlayback(true);
+            //     setPauseState();
+            // }
         });
     
 }]);
