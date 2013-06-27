@@ -1,0 +1,16 @@
+<a href="#" ng-click="toggleState()" class="side-menu-btn"></a>
+
+<div id="search-menu">
+    <input type="text" class="search-input" ng-model="search" />
+</div>
+
+<div id="song-list">
+    <ul>
+        <li ng-repeat="song in songs | filter:search">
+            <div atl-song-cell="song._id"
+                 atl-song-cell-title="song.name | noext"
+                 atl-song-cell-sp="song.songpacks"
+                 atl-song-cell-artist="song.user_name"> </div>
+        </li>
+    </ul>
+</div>

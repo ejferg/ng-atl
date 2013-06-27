@@ -80,3 +80,10 @@ app.get('/', function(req, res){
     
     res.render('index');
 });
+
+app.get('/presentation', function(req, res){
+    
+    res.render('presentation');
+});
+
+
