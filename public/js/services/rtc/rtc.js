@@ -43,7 +43,7 @@ atl.factory('rtc',
             var url = URL.createObjectURL(stream);
             
             return $rootScope.$apply(function() {
-                return deferred.resolve(url);
+                return deferred.resolve({id: stream.id, url: url});
             });
         });
         

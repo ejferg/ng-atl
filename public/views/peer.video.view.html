@@ -2,11 +2,12 @@
     
     <div atl-peer-video="{{localStream.id}}" 
          atl-peer-video-url="{{localStream.url}}"
-         atl-peer-video-type="local"></div>
+         atl-peer-video-type="local"
+         class="local"></div>
     
     <div ng-repeat="stream in streams">
     
-        <div atl-peer-video
+        <div atl-peer-video="{{stream.id}}"
              atl-peer-video-url="{{stream.url}}"
              atl-peer-video-type="remote"></div>
     </div>

@@ -6,9 +6,9 @@ atl.controller('PeerVideoController',
         
         var createLocalStream = function() {
             
-            rtc.createStream().then(function(url) {
+            rtc.createStream().then(function(stream) {
                 
-                $scope.localStream = {id: 'you', url: url};
+                $scope.localStream = {id: stream.id, url: stream.url};
             });
             
             // rtc.connect('ngapp');

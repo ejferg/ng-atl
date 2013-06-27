@@ -18,34 +18,152 @@
         
     <div class="background"></div>
     
-	<div id="hint">presentation by <a href="http://twitter.com/ejferg">Earl Ferguosn/a>
-		- use the spacebar or arrow keys to navigate</div>
+  <!--  <div id="hint">presentation by <a href="http://twitter.com/ejferg">Earl Ferguosn/a>-->
+    	<!--- use the spacebar or arrow keys to navigate</div>-->
 	
-	<div id="impress">
+	<div id="impress" class="impress-not-supported">
 		
-        <div id="start" class="step">
+        <div id="start" class="step" data-x="500">
             <div class="big bold">
     			<div id="start-text1">Peer Angular</div>
 				<div id="start-text2">What is WebRTC?</div>
 			</div>
         <div>
         
-        <div id="what" class="step">
+        <div id="what" class="step" data-x="-1200" data-y="300">
 			<div class="big bold">
-				<div id="what-text1">Responsive websites</div>
-				<div id="what-text2">respond</div>
-				
+				<div id="what-text1">Web Real Time Communication</div>
+				<div id="what-text2">in the browser</div>
+                <div id="what-text3">open framework</div>
 			</div>
-            
-            <div id="what-text3" class="big extralight">to their environment</div>
 		</div>
         
+        <div id="provide" class="step" data-x="1200" data-y="300">
+            <div class="big bold">
+                <div id="provide-title">Provides</div>
+                <div id="provide-comp">Network, Audio & Video Components.</div>
+                
+            </div>
+            <div id="#provide-used" class="big light">Used in voice and video chat applications.</div>
+        </div>
+        
+        <div id="userfriendly" class="step" data-x="-2300" data-y="300">
+            <div id="uf-title" class="big bold">Friendly</div>
+            <blockquote>
+                “With the WebRTC spec, a great 1:1 video chat experience can be built with under 100 lines of JavaScript code”
+                <span class="author">--Alan Quayle</span>
+            </blockquote>
+            
+        </div>
+        
+        <div id="plugins" class="step" data-x="-1000" data-y="-300" data-rotate="-90">
+                
+            <div id="plugins-title" class="big bold">Plugins?</div>
+
+            <div class="big light">
+                <div id="plugins-nah">Nah Dude</div>
+                <div id="plugins-js" >All Javascript</div>
+            </div>
+        </div>
+        
+        <div id="core" class="step" data-x="2200" data-y="800">
+                
+            <div id="core-title" class="big bold">The Core</div>
+        </div>
+        
+        <div id="media" class="step" data-x="2200" data-y="1000">
+                
+            <div id="media-title" class="big bold">Mediastream</div>
+            <div id="media-content" class="big extralight">Camera & microphone</div>
+            
+        </div>
+        
+        <div id="peer" class="step" data-x="2200" data-y="1150">
+                
+            <div id="peer-title" class="big bold">PeerConnection</div>
+            <div id="peer-content" class="big extralight">Audio or Video calling.</div>
+            
+        </div>
+        
+        <div id="data" class="step" data-x="2200" data-y="1300">
+                
+            <div id="data-title" class="big bold">DataChannel</div>
+            <div id="data-content" class="big extralight">Generic Data</div>
+            
+        </div>
+        
+        <div id="how" class="step" data-x="3500" data-y="-1000" data-rotate="90">
+                
+            <div id="how-title" class="big bold">HOW?</div>
+            <img src="../img/process.png" />
+            
+        </div>
+        
+        <div id="use" class="step" data-x="-2200" data-y="1900">
+                
+            <div id="use-title" class="big bold">Use Cases</div>
+        </div>
+        
+        <div id="seamless" class="step" data-x="-2200" data-y="2000">
+                
+            <div class="big extralight">Seamless Conferencing</div>
+        </div>
+        
+        <div id="shopper" class="step" data-x="-2200" data-y="2100">
+                
+            <div class="big extralight">Personal Shopper</div>
+        </div>
+        
+        <div id="games" class="step" data-x="-2200" data-y="2200">
+                
+            <div class="big extralight">Rich 3D Games</div>
+        </div>
+        
+        <div id="fw" class="step" data-x="-4000" data-y="2200">
+                
+            <div id="use-title" class="big bold">Frameworks</div>
+        </div>
+        
+        <div id="fw-wio" class="step" data-x="-4000" data-y="2320">
+                
+            <div class="big extralight">Webrtc.io</div>
+        </div>
+        
+        <div id="fw-pj" class="step" data-x="-4000" data-y="2420">
+                
+            <div class="big extralight">Peerjs</div>
+        </div>
+        
+        <div id="fw-sw" class="step" data-x="-4000" data-y="2520">
+                
+            <div class="big extralight">simplewebrtc</div>
+        </div>
+        
+        <div id="fw-holla" class="step" data-x="-4000" data-y="2620">
+                
+            <div class="big extralight">Holla</div>
+        </div>
+        
+        <div id="support" class="step" data-x="-3000" data-y="4620">
+            <div class="big bold">
+        		<div id="support-title">Support</div>
+			</div>
+        </div>
+        
+        <div id="support-chrome" class="step" data-x="-3000" data-y="4720">
+            <div class="big light">Chrome</div>
+        </div>
+        
+        <div id="support-fox" class="step" data-x="-3000" data-y="4820">
+            <div class="big light">FireFox</div>
+        </div>
+    
     </div>
 	
          <!-- Dependencies -->
          <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
          <script src="../lib/impress.js/js/impress.js"></script>
-         <!-- <script type="text/javascript">impress().init();</script> -->
+         <script type="text/javascript">impress().init();</script> 
 
         
     </body>
